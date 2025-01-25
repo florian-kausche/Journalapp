@@ -80,7 +80,7 @@ namespace JournalApp
 
         public JournalEntry(string prompt, string response)
         {
-            Date = DateTime.Now.ToShortDateString();
+            Date = DateTime.Now.ToString("yyyy-MM-dd");
             Prompt = prompt;
             Response = response;
         }
@@ -94,12 +94,7 @@ namespace JournalApp
     // Journal Class
     public class Journal
     {
-        public List<JournalEntry> Entries { get; set; }
-
-        public Journal()
-        {
-            Entries = new List<JournalEntry>();
-        }
+        public List<JournalEntry> Entries { get; set; } = new List<JournalEntry>();
 
         public void AddEntry(string prompt, string response)
         {
@@ -111,6 +106,16 @@ namespace JournalApp
             foreach (var entry in Entries)
             {
                 Console.WriteLine(entry.ToString());
+            }
+        }
+
+        // Recursive method to display entries
+        public void DisplayEntriesRecursive(int index = 0)
+        {
+            if (index < Entries.Count)
+            {
+                Console.WriteLine(Entries[index].ToString());
+                DisplayEntriesRecursive(index + 1);
             }
         }
 
@@ -143,6 +148,3 @@ namespace JournalApp
         }
     }
 }
-
-    
-    

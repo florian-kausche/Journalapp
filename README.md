@@ -27,4 +27,8 @@ The following tools were used to develop this software:
 
 ## Running the Program
 To run the program, follow these steps:
+- Open the Vscode terminal by pressing ctrl and `
+- change the directory to the programs file path
+- type dotnet run and press enter
+- Either enter a new entry, select to display the journal, save the journal to a file or load the journal from the file.
 
