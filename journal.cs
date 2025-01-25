@@ -140,7 +140,7 @@ namespace JournalApp
             while (running) // Loop
             {
                 DisplayMenu();
-                string choice = Console.ReadLine();
+                string choice = Console.ReadLine() ?? string.Empty;
 
                 switch (choice) // Conditional
                 {
@@ -149,7 +149,7 @@ namespace JournalApp
                         string prompt = GetPrompt();
                         Console.WriteLine(prompt);
                         Console.Write("Your response: ");
-                        string response = Console.ReadLine();
+                        string response = Console.ReadLine() ?? string.Empty;
                         journal.AddEntry(prompt, response);
                         break;
                     case "2":
@@ -159,13 +159,13 @@ namespace JournalApp
                     case "3":
                         // Save the journal to a file
                         Console.Write("Enter filename to save: ");
-                        string saveFilename = Console.ReadLine();
+                        string saveFilename = Console.ReadLine() ?? string.Empty;
                         journal.SaveToFile(saveFilename);
                         break;
                     case "4":
                         // Load the journal from a file
                         Console.Write("Enter filename to load: ");
-                        string loadFilename = Console.ReadLine();
+                        string loadFilename = Console.ReadLine() ?? string.Empty;
                         journal.LoadFromFile(loadFilename);
                         break;
                     case "5":
