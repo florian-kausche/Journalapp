@@ -36,7 +36,7 @@ bool running = true;
 while (running)
 {
     DisplayMenu();
-    string choice = Console.ReadLine();
+    string choice = Console.ReadLine() ?? string.Empty;
 
     switch (choice)
     {
@@ -44,7 +44,7 @@ while (running)
             string prompt = GetPrompt();
             Console.WriteLine(prompt);
             Console.Write("Your response: ");
-            string response = Console.ReadLine();
+            string response = Console.ReadLine() ?? string.Empty;
             journal.AddEntry(prompt, response);
             break;
         case "2":
@@ -52,13 +52,20 @@ while (running)
             break;
         case "3":
             Console.Write("Enter filename to save to: ");
-            string saveFile = Console.ReadLine();
+            string saveFile = Console.ReadLine() ?? string.Empty;
             journal.SaveToFile(saveFile);
             break;
         case "4":
             Console.Write("Enter filename to load from: ");
-            string loadFile = Console.ReadLine();
-            journal.LoadFromFile(loadFile);
+            string loadFile = Console.ReadLine() ?? string.Empty;
+            if (!string.IsNullOrEmpty(loadFile))
+            {
+                journal.LoadFromFile(loadFile);
+            }
+            else
+            {
+                Console.WriteLine("Filename cannot be empty.");
+            }
             break;
         case "5":
             running = false;
