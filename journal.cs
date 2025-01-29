@@ -62,21 +62,30 @@ namespace JournalApp
             }
         }
 
-        // Method to load journal entries from a file
+        // Method to load journal entries from a file and display them
         public void LoadFromFile(string filename)
         {
             Entries.Clear();
-            string[] lines = File.ReadAllLines(filename);
-            foreach (string line in lines) // Loop
+            try
             {
-                string[] parts = line.Split('|');
-                if (parts.Length == 3) // Conditional
+                string[] lines = File.ReadAllLines(filename);
+                foreach (string line in lines) // Loop
                 {
-                    string date = parts[0];
-                    string prompt = parts[1];
-                    string response = parts[2];
-                    Entries.Add(new JournalEntry(prompt, response) { Date = date });
+                    string[] parts = line.Split('|');
+                    if (parts.Length == 3) // Conditional
+                    {
+                        string date = parts[0];
+                        string prompt = parts[1];
+                        string response = parts[2];
+                        Entries.Add(new JournalEntry(prompt, response) { Date = date });
+                    }
                 }
+                Console.WriteLine("Journal entries loaded successfully.");
+                DisplayEntries(); // Display the loaded entries
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred while loading the file: {ex.Message}");
             }
         }
     }
@@ -163,7 +172,7 @@ namespace JournalApp
                         journal.SaveToFile(saveFilename);
                         break;
                     case "4":
-                        // Load the journal from a file
+                        // Load the journal from a file and display entries
                         Console.Write("Enter filename to load: ");
                         string loadFilename = Console.ReadLine() ?? string.Empty;
                         journal.LoadFromFile(loadFilename);
