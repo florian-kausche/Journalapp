@@ -9,10 +9,10 @@ The software includes functionality for creating, reading, saving, and loading j
 The purpose of creating this software is to practice using C# for basic console application functionality. It also provides a starting point for understanding file I/O operations and managing data within a C# application.
 
 ## Software Demo Video
-[Watch the demo video](https://youtu.be/YHgtcChbgZQ)
+[Watch the demo video](https://youtu.be/nLM27w9plVw)
 
 ## GitHub Repository
-(https://github.com/yourusername/JournalApp)
+(https://github.com/florian-kausche/Journalapp)
 
 ## Development Environment
 The following tools were used to develop this software:
